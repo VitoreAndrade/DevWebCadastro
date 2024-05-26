@@ -6,13 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class Racao {
-
-
     @Entity
     @Table(name = "racao")
     @Getter
@@ -101,6 +98,7 @@ public class Racao {
         public void setAtivo(boolean ativo) {
             this.ativo = ativo;
         }
+
     }
 
 }

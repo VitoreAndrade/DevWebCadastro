@@ -8,11 +8,11 @@
 		<version>3.2.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>Zeus</groupId>
-	<artifactId>API.ZEUS</artifactId>
+	<groupId>DevWeb</groupId>
+	<artifactId>Dev.Web</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>API.ZEUS</name>
-	<description>Projeto vortex Zeus</description>
+	<name>DevWeb</name>
+	<description>Projeto aula de desenvolvimento web</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

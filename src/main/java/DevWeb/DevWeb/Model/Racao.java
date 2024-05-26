@@ -8,15 +8,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-
+@Entity
+@Table(name = "racao")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Racao {
-    @Entity
-    @Table(name = "racao")
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public class Racao {
+
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
@@ -101,4 +100,4 @@ public class Racao {
 
     }
 
-}
+

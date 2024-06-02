@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.apache.catalina.User;
 
 @Entity
 @Table(name = "usuarios")
@@ -41,7 +40,7 @@ public class Usuario {
         this.nome = dadosCadastroUsuario.nome();
         this.idade = dadosCadastroUsuario.idade();
         this.telefone = dadosCadastroUsuario.telefone();
-        this.usuario = new User(dadosCadastroUsuario.user());
+        this.usuario = new User (dadosCadastroUsuario.user());
     }
 
     public void excluir (){

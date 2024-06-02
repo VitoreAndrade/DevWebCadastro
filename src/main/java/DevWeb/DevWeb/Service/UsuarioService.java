@@ -1,24 +1,19 @@
 package DevWeb.DevWeb.Service;
 
-import Zeus.API.ZEUS.Dto.DadosAtualizacaoUsuario;
-import Zeus.API.ZEUS.Dto.DadosCadastroLogin;
+import DevWeb.DevWeb.Dto.DadosAtualizacaoUsuario;
+import DevWeb.DevWeb.Dto.DadosListagemUsuario;
+import DevWeb.DevWeb.Model.User;
+import DevWeb.DevWeb.Repository.RacaoRepository;
+import DevWeb.DevWeb.Repository.UserRepository;
 import DevWeb.DevWeb.Dto.DadosCadastroUsuario;
-import Zeus.API.ZEUS.Dto.DadosListagemUsuario;
-import DevWeb.DevWeb.Model.Racao;
-import Zeus.API.ZEUS.Model.User;
 import DevWeb.DevWeb.Model.Usuario;
-import Zeus.API.ZEUS.Repository.RacaoRepository;
-import Zeus.API.ZEUS.Repository.UserRepository;
 import DevWeb.DevWeb.Repository.UsuarioRepository;
-import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -73,17 +68,6 @@ public class UsuarioService {
         usuarioRepository.save(usuario);
         return ResponseEntity.ok().body(usuario);
     }
-
-    //    public ResponseEntity<?> atualizarUsuario(String username, DadosAtualizacaoUsuario dadosAtualizacaoUsuario) {
-//        User user = userRepository.findByLogin(username);
-//        if (user == null) {
-//            return ResponseEntity.notFound().build();
-//        }
-//        // Salva o usuário atualizado no banco de dados
-//        userRepository.save(user);
-//
-//        return ResponseEntity.ok().build();
-//    }
     public ResponseEntity excluirUsuario(Long id) {
         Usuario usuario = usuarioRepository.getReferenceById(id);
         usuario.excluir();

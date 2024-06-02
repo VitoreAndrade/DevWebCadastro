@@ -1,20 +1,15 @@
 package DevWeb.DevWeb.Controller;
 
 import DevWeb.DevWeb.Dto.*;
-import Zeus.API.ZEUS.Model.User;
-import Zeus.API.ZEUS.Service.AutenticacaoService;
+import DevWeb.DevWeb.Model.User;
+import DevWeb.DevWeb.Service.AutenticacaoService;
 import DevWeb.DevWeb.Service.UsuarioService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,18 +30,6 @@ public class UsuarioController {
     public ResponseEntity cadastrarUsuario(@RequestBody @Valid DadosCadastroUsuario dadosCadastroUsuario){
         return usuarioService.cadastrarUsuario(dadosCadastroUsuario);
     }
-
-    //    @GetMapping
-    //    public Page<DadosListagemUsuario> listarUsuario (@PageableDefault(size = 30, sort = {"nome"}) Pageable lista){
-    //        return usuarioService.listarUsuario(lista);
-    //    }
-
-
-//    @PutMapping
-//    @Transactional
-//    public ResponseEntity atualizarUsuario(@RequestBody @Valid DadosAtualizacaoUsuario dadosAtualizacaoUsuario){
-//        return usuarioService.atualizarUsuario(dadosAtualizacaoUsuario);
-//    }
 
     @DeleteMapping("/{id}")
     @Transactional
@@ -73,11 +56,4 @@ public class UsuarioController {
 
         return response;
     }
-//    @PatchMapping("/atualizar")
-//    public ResponseEntity<User> atualizarUsuario(@RequestBody DadosAtualizacaoUser dadosAtualizacaoUser) {
-//        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        String username = userDetails.getUsername();
-//        ResponseEntity<?> response = usuarioService.atualizarUsuario(username, dadosAtualizacaoUser);
-//        return response;
-//    }
 }

@@ -22,7 +22,7 @@ import java.util.List;
 @Service
 public class UsuarioService {
 
-    private static final Logger log = LoggerFactory.getLogger(UsuarioService.class);
+
     @Autowired
     private UsuarioRepository usuarioRepository;
     @Autowired
@@ -59,11 +59,26 @@ public class UsuarioService {
         if (dadosAtualizacaoUsuario.nome() != null) {
             usuario.setNome(dadosAtualizacaoUsuario.nome());
         }
+        else {
+            usuario.setNome(usuario.getNome());
+        }
         if (dadosAtualizacaoUsuario.email() != null) {
             usuario.setEmail(dadosAtualizacaoUsuario.email());
         }
+        else{
+            usuario.setEmail(usuario.getEmail());
+        }
         if (dadosAtualizacaoUsuario.idade() > 0) {
             usuario.setIdade(dadosAtualizacaoUsuario.idade());
+        }
+        else {
+            usuario.setIdade(usuario.getIdade());
+        }
+        if(dadosAtualizacaoUsuario.telefone() != null){
+            usuario.setTelefone(dadosAtualizacaoUsuario.telefone());
+        }
+        else{
+            usuario.setTelefone(usuario.getTelefone());
         }
         usuarioRepository.save(usuario);
         return ResponseEntity.ok().body(usuario);

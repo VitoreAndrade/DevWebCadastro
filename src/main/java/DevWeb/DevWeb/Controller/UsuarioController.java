@@ -7,9 +7,13 @@ import DevWeb.DevWeb.Service.UsuarioService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,6 +35,18 @@ public class UsuarioController {
         return usuarioService.cadastrarUsuario(dadosCadastroUsuario);
     }
 
+        @GetMapping
+        public Page<DadosListagemUsuario> listarUsuario (@PageableDefault(size = 30, sort = {"nome"}) Pageable lista){
+            return usuarioService.listarUsuario(lista);
+        }
+
+
+//    @PutMapping
+//    @Transactional
+//    public ResponseEntity atualizarUsuario(@RequestBody @Valid DadosAtualizacaoUsuario dadosAtualizacaoUsuario){
+//        return usuarioService.atualizarUsuario(dadosAtualizacaoUsuario);
+//    }
+
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity excluirUsuario (@PathVariable Long id){
@@ -38,7 +54,7 @@ public class UsuarioController {
     }
 
 
-    @GetMapping
+    @GetMapping("/logado")
     public ResponseEntity<List<User>> listarUsuarios() {
         List<User> usuarios = usuarioService.listarUsuarios();
         return ResponseEntity.ok(usuarios);
@@ -56,4 +72,11 @@ public class UsuarioController {
 
         return response;
     }
+//    @PatchMapping("/atualizar")
+//    public ResponseEntity<User> atualizarUsuario(@RequestBody DadosAtualizacaoUser dadosAtualizacaoUser) {
+//        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        String username = userDetails.getUsername();
+//        ResponseEntity<?> response = usuarioService.atualizarUsuario(username, dadosAtualizacaoUser);
+//        return response;
+//    }
 }
